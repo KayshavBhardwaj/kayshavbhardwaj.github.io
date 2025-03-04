@@ -1,131 +1,92 @@
-<!-- code generated using claude 3.7 sonnet as a placeholder -->
-<!-- will update it with my own project in a future date -->
+<!-- code generated using claude 3.7 sonnet and chatgpt o3-mini-high as a placeholder -->
+<!-- will update it with my own project in the future -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayshav Bhardwaj</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #f5f5f5;
-            cursor: none;
-        }
-        
-        #container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background-color: #f5f5f5;
-        }
-        
-        .pole {
-            position: absolute;
-            width: 10px;
-            height: 100px;
-            background-color: #000;
-            transform-origin: bottom center;
-        }
-        
-        .shadow {
-            position: absolute;
-            background-color: #555;
-            opacity: 0.5;
-            transform-origin: top center;
-        }
-        
-        #cursor-light {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 0, 0.5);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayshav Bhardwaj</title>
+  
+  <!-- Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Raleway:wght@900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: none; /* Hide default cursor for more immersive effect */
+    }
+    
+    #sample-text {
+      color: #fff;
+      font-family: 'Merriweather', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      position: relative;
+      text-transform: uppercase;
+      transition: text-shadow 0.05s ease-out; /* Subtle smoothing */
+      text-align: center; /* Center the text inside the div */
+    }
+    
+    #cursor {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <div id="cursor-light"></div>
-    </div>
-
-    <script>
-        const container = document.getElementById('container');
-        const cursorLight = document.getElementById('cursor-light');
-        const poles = [];
-        const shadows = [];
-        const numPoles = 50;
-        
-        // Create poles
-        for (let i = 0; i < numPoles; i++) {
-            const pole = document.createElement('div');
-            pole.className = 'pole';
-            
-            // Random position
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            
-            pole.style.left = `${x}px`;
-            pole.style.bottom = '0';
-            
-            // Random height
-            const height = 50 + Math.random() * 150;
-            pole.style.height = `${height}px`;
-            
-            container.appendChild(pole);
-            poles.push({ element: pole, x, height });
-            
-            // Create shadow for each pole
-            const shadow = document.createElement('div');
-            shadow.className = 'shadow';
-            container.appendChild(shadow);
-            shadows.push(shadow);
-        }
-        
-        // Update shadows on mouse move
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            
-            // Move the light cursor
-            cursorLight.style.left = `${mouseX}px`;
-            cursorLight.style.top = `${mouseY}px`;
-            
-            // Update each pole's shadow
-            poles.forEach((pole, index) => {
-                const shadow = shadows[index];
-                const dx = pole.x - mouseX;
-                const dy = window.innerHeight - mouseY;
-                
-                // Calculate shadow length and angle
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const shadowLength = pole.height * 0.5 * (1 + distance / 500);
-                const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 90;
-                
-                // Set shadow properties
-                shadow.style.width = '10px';
-                shadow.style.height = `${shadowLength}px`;
-                shadow.style.left = `${pole.x}px`;
-                shadow.style.bottom = `${pole.height}px`;
-                shadow.style.transform = `rotate(${angle}deg)`;
-                
-                // Adjust opacity based on distance
-                const opacity = 0.7 - Math.min(0.5, distance / 1000);
-                shadow.style.opacity = opacity;
-            });
-        });
-        
-        // Adjust on window resize
-        window.addEventListener('resize', () => {
-            poles.forEach((pole, index) => {
-                // Update pole positions if needed
-                pole.x = parseFloat(pole.element.style.left);
-            });
-        });
-    </script>
+    <div id="sample-text">Kayshav Bhardwaj<br> ai @ purdue</div>
+  <div id="cursor"></div>
+  
+  <script>
+    const sampleText = document.getElementById('sample-text');
+    const cursor = document.getElementById('cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      // Update custom cursor position
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      
+      // Get text element dimensions and position
+      const rect = sampleText.getBoundingClientRect();
+      const textCenterX = rect.left + rect.width / 2;
+      const textCenterY = rect.top + rect.height / 2;
+      
+      // Calculate direction for shadow (from light source at cursor)
+      const shadowX = (textCenterX - e.clientX) / 15;
+      const shadowY = (textCenterY - e.clientY) / 15;
+      
+      // Calculate distance for shadow intensity
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - textCenterX, 2) +
+        Math.pow(e.clientY - textCenterY, 2)
+      );
+      
+      // Adjust blur based on distance - closer cursor = sharper shadow
+      const blur = Math.min(20, Math.max(5, distance / 15));
+      
+      // Apply shadow effect
+      sampleText.style.textShadow = `
+        ${shadowX}px ${shadowY}px ${blur}px rgba(100, 100, 100, 0.8),
+        0px 0px 15px rgba(50, 50, 50, 0.5)
+      `;
+    });
+  </script>
 </body>
 </html>
+
