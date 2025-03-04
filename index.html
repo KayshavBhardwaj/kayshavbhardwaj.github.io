@@ -10,35 +10,95 @@
   <!-- Google Fonts Link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Raleway:wght@900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
   
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
-      overflow: hidden;
+      overflow-x: hidden;
+      cursor: none; /* Hide default cursor for more immersive effect */
+    }
+    
+    section {
       height: 100vh;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: none; /* Hide default cursor for more immersive effect */
+      position: relative;
+    }
+    
+    #section-1 {
+      background-color: #000;
+    }
+    
+    #section-2 {
+      background-color: #fff;
     }
     
     #sample-text {
       color: #fff;
-      font-family: 'Merriweather', sans-serif;
       font-size: 64px;
       font-weight: 900;
       letter-spacing: 2px;
       position: relative;
-      text-transform: uppercase;
-      transition: text-shadow 0.05s ease-out; /* Subtle smoothing */
-      text-align: center; /* Center the text inside the div */
+      transition: text-shadow 0.05s ease-out, transform 0.8s ease, opacity 0.8s ease;
+      text-align: center;
+    }
+    
+    /* Style for the name with proper capitalization */
+    #sample-text .name {
+      font-family: 'Merriweather', sans-serif;
+      text-transform: capitalize;
+      display: block;
+    }
+    
+    /* Style for the affiliation in lowercase */
+    #sample-text .affiliation {
+      font-family: 'Merriweather', sans-serif;
+      text-transform: lowercase;
+      display: block;
+      font-size: 32px;
+      margin-top: 10px;
+    }
+    
+    /* "AIM" text styling */
+    #aim-text {
+      color: #000;
+      font-family: 'Merriweather', sans-serif;
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      position: relative;
+      z-index: 600;
+    }
+    
+    /* White overlay to create the fade-to-white effect */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 500;
+      transition: opacity 0.8s ease;
     }
     
     #cursor {
-      position: absolute;
+      position: fixed;
       width: 12px;
       height: 12px;
       border-radius: 50%;
@@ -46,45 +106,123 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 1000;
+      transition: background-color 0.5s ease;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      font-family: 'Merriweather', sans-serif;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
     }
   </style>
 </head>
 <body>
-    <div id="sample-text">Kayshav Bhardwaj<br> ai @ purdue</div>
   <div id="cursor"></div>
+  <!-- White overlay that fades in -->
+  <div id="overlay"></div>
+  
+  <section id="section-1">
+    <div id="sample-text">
+      <span class="name">kayshav bhardwaj</span>
+      <span class="affiliation">ai @ purdue</span>
+    </div>
+    <div class="scroll-indicator">scroll down</div>
+  </section>
+  
+  <section id="section-2">
+    <div id="aim-text">AI + Music</div>
+  </section>
   
   <script>
     const sampleText = document.getElementById('sample-text');
+    const aimText = document.getElementById('aim-text');
     const cursor = document.getElementById('cursor');
+    const overlay = document.getElementById('overlay');
     
+    // Mousemove event for custom cursor and dynamic text shadow
     document.addEventListener('mousemove', (e) => {
       // Update custom cursor position
       cursor.style.left = `${e.clientX}px`;
       cursor.style.top = `${e.clientY}px`;
       
-      // Get text element dimensions and position
+      // Shadow for sampleText
       const rect = sampleText.getBoundingClientRect();
       const textCenterX = rect.left + rect.width / 2;
       const textCenterY = rect.top + rect.height / 2;
-      
-      // Calculate direction for shadow (from light source at cursor)
       const shadowX = (textCenterX - e.clientX) / 15;
       const shadowY = (textCenterY - e.clientY) / 15;
-      
-      // Calculate distance for shadow intensity
       const distance = Math.sqrt(
         Math.pow(e.clientX - textCenterX, 2) +
         Math.pow(e.clientY - textCenterY, 2)
       );
-      
-      // Adjust blur based on distance - closer cursor = sharper shadow
       const blur = Math.min(20, Math.max(5, distance / 15));
-      
-      // Apply shadow effect
       sampleText.style.textShadow = `
         ${shadowX}px ${shadowY}px ${blur}px rgba(100, 100, 100, 0.8),
         0px 0px 15px rgba(50, 50, 50, 0.5)
       `;
+      
+      // Shadow for aimText
+      const aimRect = aimText.getBoundingClientRect();
+      const aimCenterX = aimRect.left + aimRect.width / 2;
+      const aimCenterY = aimRect.top + aimRect.height / 2;
+      const aimShadowX = (aimCenterX - e.clientX) / 15;
+      const aimShadowY = (aimCenterY - e.clientY) / 15;
+      const aimDistance = Math.sqrt(
+        Math.pow(e.clientX - aimCenterX, 2) +
+        Math.pow(e.clientY - aimCenterY, 2)
+      );
+      const aimBlur = Math.min(20, Math.max(5, aimDistance / 15));
+      aimText.style.textShadow = `
+        ${aimShadowX}px ${aimShadowY}px ${aimBlur}px rgba(100, 100, 100, 0.8),
+        0px 0px 15px rgba(50, 50, 50, 0.5)
+      `;
+      
+      // Change cursor color based on scroll position
+      if (window.scrollY > window.innerHeight / 2) {
+        cursor.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+      } else {
+        cursor.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+      }
+    });
+    
+    // Scroll animation effect: fade to white, fade out sampleText, and fade in AIM text
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollPercentage = Math.min(scrollPosition / windowHeight, 1);
+      
+      // Move sampleText upward and fade it out
+      sampleText.style.transform = `translateY(${-scrollPercentage * 100}px)`;
+      sampleText.style.opacity = 1 - scrollPercentage;
+      
+      // Fade in the white overlay to transition the background
+      overlay.style.opacity = scrollPercentage;
+      
+      // Fade in and move the AIM text once scrolling past half the viewport
+      if (scrollPercentage > 0.5) {
+        aimText.style.opacity = (scrollPercentage - 0.5) * 2;
+        aimText.style.transform = `translateY(${(1 - scrollPercentage) * 50}px)`;
+      } else {
+        aimText.style.opacity = 0;
+        aimText.style.transform = `translateY(50px)`;
+      }
     });
   </script>
 </body>
