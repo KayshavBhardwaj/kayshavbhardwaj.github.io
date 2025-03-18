@@ -1,5 +1,3 @@
-<!-- code generated using claude 3.7 sonnet and chatgpt o3-mini-high -->
-<!-- will update it with my own contents in the future -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +34,12 @@
             background-color: #fff;
         }
         #section-3 {
+            background-color: #000;
+        }
+        #section-4 {
+            background-color: #fff;
+        }
+        #section-5 {
             background-color: #000;
         }
         #sample-text {
@@ -75,7 +79,7 @@
             position: relative;
             z-index: 600;
         }
-        /* "TDM" text styling */
+        /* "GRAIL" text styling */
         #tdm-text {
             color: #fff;
             font-family: 'Merriweather', sans-serif;
@@ -88,6 +92,34 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             position: relative;
             z-index: 800;
+        }
+        /* "TDM" text styling */
+        #new-tdm-text {
+            color: #000;
+            font-family: 'Merriweather', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            position: relative;
+            z-index: 1000;
+        }
+        /* "Your Company Here" text styling */
+        #company-text {
+            color: #fff;
+            font-family: 'Merriweather', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            position: relative;
+            z-index: 1200;
         }
         /* White overlay to create the fade-to-white effect */
         #white-overlay {
@@ -113,6 +145,32 @@
             opacity: 0;
             pointer-events: none;
             z-index: 700;
+            transition: opacity 0.8s ease;
+        }
+        /* White overlay for transition to fourth section */
+        #white-overlay-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 900;
+            transition: opacity 0.8s ease;
+        }
+        /* Black overlay for transition to fifth section */
+        #black-overlay-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1100;
             transition: opacity 0.8s ease;
         }
         #cursor {
@@ -170,6 +228,10 @@
     <div id="white-overlay"></div>
     <!-- Black overlay for section 2 to 3 transition -->
     <div id="black-overlay"></div>
+    <!-- White overlay for section 3 to 4 transition -->
+    <div id="white-overlay-2"></div>
+    <!-- Black overlay for section 4 to 5 transition -->
+    <div id="black-overlay-2"></div>
     
     <section id="section-1">
         <div id="sample-text">
@@ -188,6 +250,14 @@
         <div id="tdm-text">Governance and Responsible AI Lab (GRAIL)</div>
     </section>
     
+    <section id="section-4">
+        <div id="new-tdm-text">TDM</div>
+    </section>
+    
+    <section id="section-5">
+        <div id="company-text">Autonomous Robotics Club (ARC)</div>
+    </section>
+    
     <!-- Footer placed after all sections -->
     <footer>
         <p>kayshav@kayshavbhardwaj.com</p>
@@ -198,9 +268,13 @@
         const sampleText = document.getElementById('sample-text');
         const aimText = document.getElementById('aim-text');
         const tdmText = document.getElementById('tdm-text');
+        const newTdmText = document.getElementById('new-tdm-text');
+        const companyText = document.getElementById('company-text');
         const cursor = document.getElementById('cursor');
         const whiteOverlay = document.getElementById('white-overlay');
         const blackOverlay = document.getElementById('black-overlay');
+        const whiteOverlay2 = document.getElementById('white-overlay-2');
+        const blackOverlay2 = document.getElementById('black-overlay-2');
 
         // Mousemove event for custom cursor and dynamic text shadow
         document.addEventListener('mousemove', (e) => {
@@ -244,8 +318,33 @@
             const tdmBlur = Math.min(20, Math.max(5, tdmDistance / 15));
             tdmText.style.textShadow = `${tdmShadowX}px ${tdmShadowY}px ${tdmBlur}px rgba(100, 100, 100, 0.8), 0px 0px 15px rgba(50, 50, 50, 0.5)`;
 
+            // Shadow for newTdmText
+            const newTdmRect = newTdmText.getBoundingClientRect();
+            const newTdmCenterX = newTdmRect.left + newTdmRect.width / 2;
+            const newTdmCenterY = newTdmRect.top + newTdmRect.height / 2;
+            const newTdmShadowX = (newTdmCenterX - e.clientX) / 15;
+            const newTdmShadowY = (newTdmCenterY - e.clientY) / 15;
+            const newTdmDistance = Math.sqrt(
+                Math.pow(e.clientX - newTdmCenterX, 2) + Math.pow(e.clientY - newTdmCenterY, 2)
+            );
+            const newTdmBlur = Math.min(20, Math.max(5, newTdmDistance / 15));
+            newTdmText.style.textShadow = `${newTdmShadowX}px ${newTdmShadowY}px ${newTdmBlur}px rgba(100, 100, 100, 0.8), 0px 0px 15px rgba(50, 50, 50, 0.5)`;
+
+            // Shadow for companyText
+            const companyRect = companyText.getBoundingClientRect();
+            const companyCenterX = companyRect.left + companyRect.width / 2;
+            const companyCenterY = companyRect.top + companyRect.height / 2;
+            const companyShadowX = (companyCenterX - e.clientX) / 15;
+            const companyShadowY = (companyCenterY - e.clientY) / 15;
+            const companyDistance = Math.sqrt(
+                Math.pow(e.clientX - companyCenterX, 2) + Math.pow(e.clientY - companyCenterY, 2)
+            );
+            const companyBlur = Math.min(20, Math.max(5, companyDistance / 15));
+            companyText.style.textShadow = `${companyShadowX}px ${companyShadowY}px ${companyBlur}px rgba(100, 100, 100, 0.8), 0px 0px 15px rgba(50, 50, 50, 0.5)`;
+
             // Change cursor color based on scroll position
-            if (window.scrollY > window.innerHeight && window.scrollY < window.innerHeight * 2) {
+            if ((window.scrollY > window.innerHeight && window.scrollY < window.innerHeight * 2) ||
+                (window.scrollY > window.innerHeight * 3 && window.scrollY < window.innerHeight * 4)) {
                 cursor.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
             } else {
                 cursor.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
@@ -287,7 +386,7 @@
                 // Fade in the black overlay to transition the background
                 blackOverlay.style.opacity = secondTransitionProgress;
                 
-                // Fade in and move the TDM text once scrolling past half the second viewport
+                // Fade in and move the GRAIL text once scrolling past half the second viewport
                 if (secondTransitionProgress > 0.5) {
                     tdmText.style.opacity = (secondTransitionProgress - 0.5) * 2;
                     tdmText.style.transform = `translateY(${(1 - secondTransitionProgress) * 50}px)`;
@@ -296,8 +395,49 @@
                     tdmText.style.transform = `translateY(50px)`;
                 }
             }
+            
+            // Third transition (black to white, section 3 to 4)
+            const thirdTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 2) / windowHeight, 1));
+            
+            // Move GRAIL text upward and fade it out during the third transition
+            if (thirdTransitionProgress > 0) {
+                tdmText.style.transform = `translateY(${-thirdTransitionProgress * 100}px)`;
+                tdmText.style.opacity = 1 - thirdTransitionProgress;
+                
+                // Fade in the white overlay to transition the background
+                whiteOverlay2.style.opacity = thirdTransitionProgress;
+                
+                // Fade in and move the TDM text once scrolling past half the third viewport
+                if (thirdTransitionProgress > 0.5) {
+                    newTdmText.style.opacity = (thirdTransitionProgress - 0.5) * 2;
+                    newTdmText.style.transform = `translateY(${(1 - thirdTransitionProgress) * 50}px)`;
+                } else {
+                    newTdmText.style.opacity = 0;
+                    newTdmText.style.transform = `translateY(50px)`;
+                }
+            }
+            
+            // Fourth transition (white to black, section 4 to 5)
+            const fourthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 3) / windowHeight, 1));
+            
+            // Move TDM text upward and fade it out during the fourth transition
+            if (fourthTransitionProgress > 0) {
+                newTdmText.style.transform = `translateY(${-fourthTransitionProgress * 100}px)`;
+                newTdmText.style.opacity = 1 - fourthTransitionProgress;
+                
+                // Fade in the black overlay to transition the background
+                blackOverlay2.style.opacity = fourthTransitionProgress;
+                
+                // Fade in and move the Company text once scrolling past half the fourth viewport
+                if (fourthTransitionProgress > 0.5) {
+                    companyText.style.opacity = (fourthTransitionProgress - 0.5) * 2;
+                    companyText.style.transform = `translateY(${(1 - fourthTransitionProgress) * 50}px)`;
+                } else {
+                    companyText.style.opacity = 0;
+                    companyText.style.transform = `translateY(50px)`;
+                }
+            }
         });
     </script>
 </body>
 </html>
-
