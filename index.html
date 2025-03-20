@@ -6,10 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kayshav Bhardwaj</title>
-    <!-- Google Fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,400&display=swap">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <style>
         html {
             scroll-behavior: smooth;
@@ -55,9 +60,12 @@
         }
         /* Style for the name with proper capitalization */
         #sample-text .name {
-            font-family: 'Merriweather', sans-serif;
+            font-family: 'Great Vibes', cursive;
             text-transform: capitalize;
             display: block;
+            font-weight: 400;
+            letter-spacing: 0;
+            font-size: 96px;  /* Larger size for better presence */
         }
         /* Style for the affiliation in lowercase */
         #sample-text .affiliation {
@@ -66,6 +74,10 @@
             display: block;
             font-size: 32px;
             margin-top: 10px;
+        }
+        /* Style for Purdue text */
+        #sample-text .purdue {
+            color: #CFB991;
         }
         /* "AIM" text styling */
         #aim-text {
@@ -80,6 +92,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             position: relative;
             z-index: 600;
+            padding: 0 40px;
+            max-width: 90vw;
+            margin: 0 auto;
         }
         /* "GRAIL" text styling */
         #tdm-text {
@@ -94,6 +109,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             position: relative;
             z-index: 1502;
+            padding: 0 40px;
+            max-width: 90vw;
+            margin: 0 auto;
         }
         /* "TDM" text styling */
         #new-tdm-text {
@@ -108,6 +126,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             position: relative;
             z-index: 1502;
+            padding: 0 40px;
+            max-width: 90vw;
+            margin: 0 auto;
         }
         /* "Your Company Here" text styling */
         #company-text {
@@ -122,6 +143,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
             position: relative;
             z-index: 1502;
+            padding: 0 40px;
+            max-width: 90vw;
+            margin: 0 auto;
         }
         /* White overlay to create the fade-to-white effect */
         #white-overlay {
@@ -363,7 +387,7 @@
     <section id="section-1">
         <div id="sample-text">
             <span class="name">kayshav bhardwaj</span>
-            <span class="affiliation">ai @ purdue</span>
+            <span class="affiliation">ai @ <span class="purdue">purdue</span></span>
         </div>
         <div class="scroll-indicator">scroll down</div>
     </section>
@@ -377,7 +401,7 @@
     
     <section id="section-3">
         <a href="grail.html" class="project-link">
-            <div id="tdm-text">Governance and Responsible AI Lab (GRAIL)</div>
+            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
         </a>
         <div class="scroll-indicator">scroll down</div>
     </section>
@@ -569,3 +593,4 @@
     </script>
 </body>
 </html>
+
