@@ -670,44 +670,6 @@
             sampleText.querySelector('.affiliation').style.filter = `drop-shadow(${shadowStyle})`;
         });
 
-        // 3D Tilt Effect
-        projectLinks.forEach(link => {
-            let timeout;
-            
-            link.addEventListener('mousemove', (e) => {
-                if (timeout) {
-                    window.cancelAnimationFrame(timeout);
-                }
-                
-                timeout = window.requestAnimationFrame(() => {
-                    const rect = link.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const xc = rect.width / 2;
-                    const yc = rect.height / 2;
-                    
-                    // Calculate distance from center as a percentage
-                    const dx = (x - xc) / xc;
-                    const dy = (y - yc) / yc;
-                    
-                    // Limit the rotation angle
-                    const maxAngle = 5;
-                    const rotateX = Math.max(-maxAngle, Math.min(maxAngle, dy * -10));
-                    const rotateY = Math.max(-maxAngle, Math.min(maxAngle, dx * 10));
-                    
-                    link.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
-                });
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                if (timeout) {
-                    window.cancelAnimationFrame(timeout);
-                }
-                link.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)';
-            });
-        });
-
         // Scroll animation effect
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
@@ -793,3 +755,4 @@
     </script>
 </body>
 </html>
+
