@@ -135,7 +135,6 @@
             white-space: nowrap;
             position: relative;
             z-index: 2;
-            text-shadow: 0 0 0 transparent;
             pointer-events: none;  /* Allow events to pass through */
         }
 
@@ -151,7 +150,6 @@
             white-space: nowrap;
             position: relative;
             z-index: 2;
-            text-shadow: 0 0 0 transparent;
             pointer-events: none;  /* Allow events to pass through */
         }
 
@@ -246,7 +244,7 @@
             white-space: nowrap;
             position: relative;
             z-index: 2;
-            text-shadow: 0 0 0 transparent;
+            pointer-events: none;  /* Allow events to pass through */
         }
         /* Style for the affiliation in lowercase */
         #sample-text .affiliation {
@@ -653,21 +651,13 @@
             cursor.style.left = `${e.clientX}px`;
             cursor.style.top = `${e.clientY}px`;
 
-            // Shadow for sampleText
-            const rect = sampleText.getBoundingClientRect();
-            const textCenterX = rect.left + rect.width / 2;
-            const textCenterY = rect.top + rect.height / 2;
-            const shadowX = (textCenterX - e.clientX) / 15;
-            const shadowY = (textCenterY - e.clientY) / 15;
-            const distance = Math.sqrt(
-                Math.pow(e.clientX - textCenterX, 2) + Math.pow(e.clientY - textCenterY, 2)
-            );
-            const blur = Math.min(15, Math.max(3, distance / 20));
-            
-            // Apply sharper shadow directly to text elements
-            const shadowStyle = `${shadowX}px ${shadowY}px ${blur}px rgba(100, 100, 100, 0.5)`;
-            sampleText.querySelector('.name').style.filter = `drop-shadow(${shadowStyle})`;
-            sampleText.querySelector('.affiliation').style.filter = `drop-shadow(${shadowStyle})`;
+            // Scale cursor when hovering over clickable elements
+            const target = e.target;
+            if (target.closest('a') || target.closest('.tech-item')) {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            } else {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            }
         });
 
         // Scroll animation effect
@@ -755,4 +745,5 @@
     </script>
 </body>
 </html>
+
 
