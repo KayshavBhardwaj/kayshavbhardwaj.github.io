@@ -546,6 +546,49 @@
             z-index: 3001;
             transition: width 0.2s ease;
         }
+
+        /* Click indicator for project links */
+        .click-indicator {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 14px;
+            font-family: 'Merriweather', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(10px);
+        }
+
+        /* Dark version for light backgrounds */
+        .click-indicator.dark {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Light version for dark backgrounds */
+        .click-indicator.light {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Show indicator on hover */
+        .project-link:hover .click-indicator {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse animation for the arrow */
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .click-indicator .arrow {
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -572,6 +615,7 @@
     <section id="section-2">
         <a href="ai4musicians.html" class="project-link">
             <div id="aim-text">AI4Musicians Lab</div>
+            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator dark">scroll down</div>
     </section>
@@ -579,6 +623,7 @@
     <section id="section-3">
         <a href="grail.html" class="project-link">
             <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
+            <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator">scroll down</div>
     </section>
@@ -586,6 +631,7 @@
     <section id="section-4">
         <a href="klatch.html" class="project-link">
             <div id="new-tdm-text">Klatch</div>
+            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator dark">scroll down</div>
     </section>
@@ -593,6 +639,7 @@
     <section id="section-5">
         <a href="arc.html" class="project-link">
             <div id="company-text">Autonomous Robotics Club (ARC)</div>
+            <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator">scroll down</div>
     </section>
