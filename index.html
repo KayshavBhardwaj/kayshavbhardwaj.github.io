@@ -140,7 +140,6 @@
 
         #sample-text .affiliation {
             font-family: 'Merriweather', sans-serif;
-            text-transform: lowercase;
             display: block;
             font-size: 32px;
             margin-top: 10px;
@@ -150,11 +149,12 @@
             white-space: nowrap;
             position: relative;
             z-index: 2;
-            pointer-events: none;  /* Allow events to pass through */
+            pointer-events: none;
         }
 
         #sample-text .purdue {
             color: #CFB991;
+            text-transform: capitalize;
         }
 
         .project-link {
@@ -249,14 +249,21 @@
         /* Style for the affiliation in lowercase */
         #sample-text .affiliation {
             font-family: 'Merriweather', sans-serif;
-            text-transform: lowercase;
             display: block;
             font-size: 32px;
             margin-top: 10px;
+            color: #fff;
+            text-align: center;
+            width: auto;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
         }
         /* Style for Purdue text */
         #sample-text .purdue {
             color: #CFB991;
+            text-transform: capitalize;
         }
         /* "AIM" text styling */
         #aim-text,
@@ -556,9 +563,9 @@
             text-align: center;
             font-size: 14px;
             font-family: 'Merriweather', sans-serif;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateY(10px);
+            opacity: 0.3;
+            transition: opacity 0.8s ease-in-out, transform 0.5s ease;
+            transform: translateY(0);
         }
 
         /* Dark version for light backgrounds */
@@ -607,7 +614,7 @@
     <section id="section-1">
         <div id="sample-text">
             <span class="name">kayshav bhardwaj</span>
-            <span class="affiliation">ai @ <span class="purdue">purdue</span></span>
+            <span class="affiliation">Research Fellow @ <span class="purdue">Purdue</span></span>
         </div>
         <div class="scroll-indicator">scroll down</div>
     </section>
