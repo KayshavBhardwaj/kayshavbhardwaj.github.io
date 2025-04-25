@@ -635,7 +635,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 20;
-            padding: 20px;
+            padding: 120px 20px 20px; /* Increased top padding from 80px to 120px */
             margin-top: 40px;
         }
 
@@ -763,7 +763,8 @@
             font-size: 48px;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 60px; /* Reduced from 80px */
+            margin-top: 40px; /* Increased top margin from 20px to 40px */
+            margin-bottom: 60px;
             transform: translateY(0);
             transition: opacity 0.8s ease, transform 0.8s ease;
             background: linear-gradient(120deg, #fff, #CFB991, #fff);
@@ -773,6 +774,8 @@
             -webkit-text-fill-color: transparent;
             animation: gradient-text 8s ease infinite;
             opacity: 1;
+            position: relative;
+            z-index: 30;
         }
 
         .timeline-content {
@@ -1030,7 +1033,7 @@
         <div class="scroll-indicator">scroll down</div>
     </section>
     
-    <!-- Timeline section with progress container for scroll -->
+    <!-- Timeline section commented out
     <div class="timeline-progress-container">
         <section id="section-6" class="timeline-section">
             <div id="particles-timeline"></div>
@@ -1085,6 +1088,7 @@
             <div class="scroll-indicator">scroll for timeline</div>
         </section>
     </div>
+    -->
     
     <!-- Footer placed after all sections -->
     <footer>
