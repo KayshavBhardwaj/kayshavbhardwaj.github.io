@@ -25,7 +25,7 @@
             padding: 0;
             background-color: #000;
             overflow-x: hidden;
-            cursor: none; /* Hide default cursor for more immersive effect */
+            cursor: auto; /* Restore default cursor */
         }
         section {
             height: 100vh;
@@ -159,7 +159,7 @@
 
         .project-link {
             text-decoration: none;
-            cursor: none;
+            cursor: pointer;
             position: relative;
             display: inline-block;
             padding: 80px;
@@ -214,15 +214,16 @@
 
         #cursor {
             position: fixed;
-            width: 12px;
-            height: 12px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            background-color: #fff;
+            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 70%);
             transform: translate(-50%, -50%);
             pointer-events: none;
             z-index: 3000;
-            mix-blend-mode: difference;
-            transition: transform 0.3s ease;
+            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+            mix-blend-mode: screen;
+            filter: blur(5px);
         }
 
         /* Style for the name with proper capitalization */
@@ -396,7 +397,7 @@
             text-decoration: none;
             position: relative;
             transition: color 0.3s ease;
-            cursor: none;
+            cursor: pointer;
             padding: 5px 0;
             margin: 0 10px;
         }
@@ -983,7 +984,6 @@
 <body>
     <div id="particles-js"></div>
     <div id="progress-bar"></div>
-    <div id="cursor"></div>
     <!-- White overlay for section 1 to 2 transition -->
     <div id="white-overlay"></div>
     <!-- Black overlay for section 2 to 3 transition -->
@@ -1131,27 +1131,12 @@
         const tdmText = document.getElementById('tdm-text');
         const newTdmText = document.getElementById('new-tdm-text');
         const companyText = document.getElementById('company-text');
-        const cursor = document.getElementById('cursor');
         const whiteOverlay = document.getElementById('white-overlay');
         const blackOverlay = document.getElementById('black-overlay');
         const whiteOverlay2 = document.getElementById('white-overlay-2');
         const blackOverlay2 = document.getElementById('black-overlay-2');
         const sections = document.querySelectorAll('section');
         const projectLinks = document.querySelectorAll('.project-link');
-
-        // Mousemove event for custom cursor and dynamic text shadow
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-
-            // Scale cursor when hovering over clickable elements
-            const target = e.target;
-            if (target.closest('a') || target.closest('.tech-item')) {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            } else {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            }
-        });
 
         // Scroll animation effect
         window.addEventListener('scroll', () => {
