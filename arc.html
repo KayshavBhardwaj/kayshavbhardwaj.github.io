@@ -20,7 +20,7 @@
             background-color: #000;
             color: #fff;
             font-family: 'Merriweather', sans-serif;
-            cursor: none;
+            cursor: auto;
             overflow-x: hidden;
         }
 
@@ -72,7 +72,7 @@
             color: #fff;
             text-decoration: none;
             font-size: 18px;
-            cursor: none;
+            cursor: pointer;
             z-index: 2000;
             padding: 10px;
             transition: color 0.3s ease;
@@ -84,7 +84,7 @@
 
         .header-link {
             text-decoration: none;
-            cursor: none;
+            cursor: pointer;
             position: relative;
             display: inline-block;
             color: inherit;
@@ -313,16 +313,12 @@
             body {
                 cursor: auto;
             }
-            #cursor {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
     <div id="progress-bar"></div>
-    <div id="cursor"></div>
     <a href="index.html" class="back-button">← Back</a>
     
     <div class="container">
@@ -388,22 +384,6 @@
                     enable: true,
                     speed: 2
                 }
-            }
-        });
-
-        // Custom cursor
-        const cursor = document.getElementById('cursor');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-
-            // Scale cursor when hovering over clickable elements
-            const target = e.target;
-            if (target.closest('a') || target.closest('.tech-item')) {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            } else {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
             }
         });
 
