@@ -79,6 +79,9 @@
         #section-5 {
             background-color: #000;
         }
+        #section-6 {
+            background-color: #fff;
+        }
 
         @keyframes gradient-text {
             0% { background-position: 0% 50%; }
@@ -185,29 +188,35 @@
             position: absolute;
             width: 0;
             height: 0;
-            transition: width 0.3s ease, height 0.3s ease;
+            transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease, border-color 0.3s ease;
             pointer-events: none;
             z-index: 1;
-            border: 0 solid currentColor;
+            border: 0 solid transparent;
             background: none;
         }
 
         .project-link::before {
             top: 0;
             left: 0;
-            border-top-width: 2px;
-            border-left-width: 2px;
         }
 
         .project-link::after {
             bottom: 0;
             right: 0;
-            border-bottom-width: 2px;
-            border-right-width: 2px;
         }
 
-        .project-link:hover::before,
+        .project-link:hover::before {
+            border-top-width: 2px;
+            border-left-width: 2px;
+            border-color: currentColor;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+        }
+
         .project-link:hover::after {
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+            border-color: currentColor;
             width: calc(100% - 2px);
             height: calc(100% - 2px);
         }
@@ -267,6 +276,7 @@
             text-transform: capitalize;
         }
         /* "AIM" text styling */
+        #bair-text,
         #aim-text,
         #tdm-text,
         #new-tdm-text,
@@ -286,20 +296,24 @@
             line-height: 1.2;
         }
 
-        #aim-text {
+        #bair-text {
             color: #000;
+        }
+
+        #aim-text {
+            color: #fff;
         }
 
         #tdm-text {
-            color: #fff;
-        }
-
-        #new-tdm-text {
             color: #000;
         }
 
-        #company-text {
+        #new-tdm-text {
             color: #fff;
+        }
+
+        #company-text {
+            color: #000;
         }
 
         /* White overlay to create the fade-to-white effect */
@@ -313,7 +327,6 @@
             opacity: 0;
             pointer-events: none;
             z-index: 1;
-            transition: opacity 0.8s ease;
         }
         /* Black overlay to create the fade-to-black effect */
         #black-overlay {
@@ -326,7 +339,6 @@
             opacity: 0;
             pointer-events: none;
             z-index: 1;
-            transition: opacity 0.8s ease;
         }
         /* White overlay for transition to fourth section */
         #white-overlay-2 {
@@ -339,7 +351,6 @@
             opacity: 0;
             pointer-events: none;
             z-index: 1;
-            transition: opacity 0.8s ease;
         }
         /* Black overlay for transition to fifth section */
         #black-overlay-2 {
@@ -352,7 +363,30 @@
             opacity: 0;
             pointer-events: none;
             z-index: 1;
-            transition: opacity 0.8s ease;
+        }
+        /* White overlay for transition to sixth section */
+        #white-overlay-3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* Black overlay for transition to seventh section */
+        #black-overlay-3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
         }
         .scroll-indicator {
             position: absolute;
@@ -446,19 +480,29 @@
         }
 
         /* Color overrides for different sections */
+        #section-2 .project-link::before,
+        #section-2 .project-link::after {
+            border-color: #000;  /* Black box for BAIR (white background) */
+        }
+
         #section-3 .project-link::before,
         #section-3 .project-link::after {
-            border-color: #fff;  /* White box for GRAIL (black background) */
+            border-color: #fff;  /* White box for AI4Musicians (black background) */
         }
 
         #section-4 .project-link::before,
         #section-4 .project-link::after {
-            border-color: #000;  /* Black box for TDM (white background) */
+            border-color: #000;  /* Black box for GRAIL (white background) */
         }
 
         #section-5 .project-link::before,
         #section-5 .project-link::after {
-            border-color: #fff;  /* White box for ARC (black background) */
+            border-color: #fff;  /* White box for Klatch (black background) */
+        }
+
+        #section-6 .project-link::before,
+        #section-6 .project-link::after {
+            border-color: #000;  /* Black box for ARC (white background) */
         }
 
         /* Remove any previous hover transforms */
@@ -471,6 +515,7 @@
 
         /* Mobile-friendly styles */
         @media screen and (max-width: 1200px) {
+            #bair-text,
             #aim-text,
             #tdm-text,
             #new-tdm-text,
@@ -489,6 +534,7 @@
             #sample-text .affiliation {
                 font-size: 24px;
             }
+            #bair-text,
             #aim-text,
             #tdm-text,
             #new-tdm-text,
@@ -512,6 +558,7 @@
             #sample-text .affiliation {
                 font-size: 20px;
             }
+            #bair-text,
             #aim-text,
             #tdm-text,
             #new-tdm-text,
@@ -566,7 +613,7 @@
             font-size: 14px;
             font-family: 'Merriweather', sans-serif;
             opacity: 0.3;
-            transition: opacity 0.8s ease-in-out, transform 0.5s ease;
+            transition: opacity 1.5s ease, transform 0.5s ease;
             transform: translateY(0);
         }
 
@@ -992,6 +1039,10 @@
     <div id="white-overlay-2"></div>
     <!-- Black overlay for section 4 to 5 transition -->
     <div id="black-overlay-2"></div>
+    <!-- White overlay for section 5 to 6 transition -->
+    <div id="white-overlay-3"></div>
+    <!-- Black overlay for section 6 to 7 transition -->
+    <div id="black-overlay-3"></div>
     
     <section id="section-1">
         <div id="sample-text">
@@ -1002,35 +1053,43 @@
     </section>
     
     <section id="section-2">
-        <a href="ai4musicians.html" class="project-link">
-            <div id="aim-text">AI4Musicians Lab</div>
+        <a href="bair.html" class="project-link">
+            <div id="bair-text">Berkeley AI Research Lab (BAIR)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-3">
-        <a href="grail.html" class="project-link">
-            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
+        <a href="ai4musicians.html" class="project-link">
+            <div id="aim-text">AI4Musicians Lab</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator">scroll down</div>
     </section>
     
     <section id="section-4">
-        <a href="klatch.html" class="project-link">
-            <div id="new-tdm-text">Klatch</div>
+        <a href="grail.html" class="project-link">
+            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-5">
-        <a href="arc.html" class="project-link">
-            <div id="company-text">Autonomous Robotics Club (ARC)</div>
+        <a href="klatch.html" class="project-link">
+            <div id="new-tdm-text">Klatch</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator">scroll down</div>
+    </section>
+    
+    <section id="section-6">
+        <a href="arc.html" class="project-link">
+            <div id="company-text">Autonomous Robotics Club (ARC)</div>
+            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
+        </a>
+        <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <!-- Timeline section commented out
@@ -1127,6 +1186,7 @@
         });
 
         const sampleText = document.getElementById('sample-text');
+        const bairText = document.getElementById('bair-text');
         const aimText = document.getElementById('aim-text');
         const tdmText = document.getElementById('tdm-text');
         const newTdmText = document.getElementById('new-tdm-text');
@@ -1135,6 +1195,8 @@
         const blackOverlay = document.getElementById('black-overlay');
         const whiteOverlay2 = document.getElementById('white-overlay-2');
         const blackOverlay2 = document.getElementById('black-overlay-2');
+        const whiteOverlay3 = document.getElementById('white-overlay-3');
+        const blackOverlay3 = document.getElementById('black-overlay-3');
         const sections = document.querySelectorAll('section');
         const projectLinks = document.querySelectorAll('.project-link');
 
@@ -1142,6 +1204,16 @@
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
+            
+            // Reset all overlays when at the top
+            if (scrollPosition === 0) {
+                whiteOverlay.style.opacity = 0;
+                blackOverlay.style.opacity = 0;
+                whiteOverlay2.style.opacity = 0;
+                blackOverlay2.style.opacity = 0;
+                whiteOverlay3.style.opacity = 0;
+                blackOverlay3.style.opacity = 0;
+            }
             
             // First transition (black to white, section 1 to 2)
             const firstTransitionProgress = Math.min(scrollPosition / windowHeight, 1);
@@ -1156,22 +1228,50 @@
             whiteOverlay.style.opacity = firstTransitionProgress;
             
             if (firstTransitionProgress > 0.5) {
-                aimText.style.opacity = (firstTransitionProgress - 0.5) * 2;
-                aimText.style.transform = 'translateY(0)';
+                bairText.style.opacity = (firstTransitionProgress - 0.5) * 2;
+                bairText.style.transform = 'translateY(0)';
             } else {
-                aimText.style.opacity = 0;
-                aimText.style.transform = 'translateY(50px)';
+                bairText.style.opacity = 0;
+                bairText.style.transform = 'translateY(50px)';
             }
             
             // Second transition
             const secondTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight) / windowHeight, 1));
             
-            if (secondTransitionProgress > 0) {
-                aimText.style.opacity = 1 - secondTransitionProgress;
+            // Reset black overlay when scrolling above second section
+            if (scrollPosition < windowHeight) {
+                blackOverlay.style.opacity = 0;
+            } else {
                 blackOverlay.style.opacity = secondTransitionProgress;
+            }
+            
+            if (secondTransitionProgress > 0) {
+                bairText.style.opacity = 1 - secondTransitionProgress;
                 
                 if (secondTransitionProgress > 0.5) {
-                    tdmText.style.opacity = (secondTransitionProgress - 0.5) * 2;
+                    aimText.style.opacity = (secondTransitionProgress - 0.5) * 2;
+                    aimText.style.transform = 'translateY(0)';
+                } else {
+                    aimText.style.opacity = 0;
+                    aimText.style.transform = 'translateY(50px)';
+                }
+            }
+            
+            // Third transition
+            const thirdTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 2) / windowHeight, 1));
+            
+            // Reset white overlay 2 when scrolling above third section
+            if (scrollPosition < windowHeight * 2) {
+                whiteOverlay2.style.opacity = 0;
+            } else {
+                whiteOverlay2.style.opacity = thirdTransitionProgress;
+            }
+            
+            if (thirdTransitionProgress > 0) {
+                aimText.style.opacity = 1 - thirdTransitionProgress;
+                
+                if (thirdTransitionProgress > 0.5) {
+                    tdmText.style.opacity = (thirdTransitionProgress - 0.5) * 2;
                     tdmText.style.transform = 'translateY(0)';
                 } else {
                     tdmText.style.opacity = 0;
@@ -1179,15 +1279,21 @@
                 }
             }
             
-            // Third transition
-            const thirdTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 2) / windowHeight, 1));
+            // Fourth transition
+            const fourthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 3) / windowHeight, 1));
             
-            if (thirdTransitionProgress > 0) {
-                tdmText.style.opacity = 1 - thirdTransitionProgress;
-                whiteOverlay2.style.opacity = thirdTransitionProgress;
+            // Reset black overlay 2 when scrolling above fourth section
+            if (scrollPosition < windowHeight * 3) {
+                blackOverlay2.style.opacity = 0;
+            } else {
+                blackOverlay2.style.opacity = fourthTransitionProgress;
+            }
+            
+            if (fourthTransitionProgress > 0) {
+                tdmText.style.opacity = 1 - fourthTransitionProgress;
                 
-                if (thirdTransitionProgress > 0.5) {
-                    newTdmText.style.opacity = (thirdTransitionProgress - 0.5) * 2;
+                if (fourthTransitionProgress > 0.5) {
+                    newTdmText.style.opacity = (fourthTransitionProgress - 0.5) * 2;
                     newTdmText.style.transform = 'translateY(0)';
                 } else {
                     newTdmText.style.opacity = 0;
@@ -1195,15 +1301,21 @@
                 }
             }
             
-            // Fourth transition
-            const fourthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 3) / windowHeight, 1));
+            // Fifth transition
+            const fifthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 4) / windowHeight, 1));
             
-            if (fourthTransitionProgress > 0) {
-                newTdmText.style.opacity = 1 - fourthTransitionProgress;
-                blackOverlay2.style.opacity = fourthTransitionProgress;
+            // Reset white overlay 3 when scrolling above fifth section
+            if (scrollPosition < windowHeight * 4) {
+                whiteOverlay3.style.opacity = 0;
+            } else {
+                whiteOverlay3.style.opacity = fifthTransitionProgress;
+            }
+            
+            if (fifthTransitionProgress > 0) {
+                newTdmText.style.opacity = 1 - fifthTransitionProgress;
                 
-                if (fourthTransitionProgress > 0.5) {
-                    companyText.style.opacity = (fourthTransitionProgress - 0.5) * 2;
+                if (fifthTransitionProgress > 0.5) {
+                    companyText.style.opacity = (fifthTransitionProgress - 0.5) * 2;
                     companyText.style.transform = 'translateY(0)';
                 } else {
                     companyText.style.opacity = 0;
