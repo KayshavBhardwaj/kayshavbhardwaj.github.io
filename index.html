@@ -8,14 +8,14 @@
     <title>Kayshav Bhardwaj</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,400&display=swap">
     <link rel="icon" type="image/png" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
     <style>
         @font-face {
             font-family: 'Futura Light';
@@ -90,6 +90,39 @@
         #section-6 {
             background-color: #f8f8f8; /* Subtle warm gray instead of pure white */
         }
+        #section-7 {
+            background-color: #000;
+        }
+        #section-8 {
+            background-color: #f8f8f8; /* Subtle warm gray instead of pure white */
+        }
+
+        /* Disable rotating backdrop on hero to keep aurora clean */
+        #section-1::before { display: none; }
+
+        /* Add a very subtle top haze to reduce empty feel */
+        #section-1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Hero canvas */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
         @keyframes gradient-text {
             0% { background-position: 0% 50%; }
@@ -129,10 +162,10 @@
         }
 
         #sample-text .name {
-            font-family: 'Merriweather', serif;
+            font-family: 'Futura Light', 'Merriweather', sans-serif;
             text-transform: capitalize;
             display: block;
-            font-weight: 700; /* Slightly lighter weight for elegance */
+            font-weight: 300;
             letter-spacing: 3px; /* Slightly reduced for refinement */
             font-size: 64px; /* Reduced from 72px for refinement */
             line-height: 1.2; /* Improved line spacing */
@@ -162,7 +195,7 @@
         }
 
         #sample-text .purdue {
-            color: #666666; /* Darker gray for better contrast */
+            color: #ffffff; /* White for better contrast against sine waves */
             text-transform: capitalize;
         }
 
@@ -227,26 +260,14 @@
             height: calc(100% - 2px);
         }
 
-        #cursor {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 70%);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 3000;
-            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-            mix-blend-mode: screen;
-            filter: blur(5px);
-        }
+        
 
         /* Style for the name with proper capitalization */
         #sample-text .name {
-            font-family: 'Merriweather', serif;
+            font-family: 'Futura Light', 'Merriweather', sans-serif;
             text-transform: capitalize;
             display: block;
-            font-weight: 700; /* Slightly lighter weight for elegance */
+            font-weight: 300; /* Light weight for Futura Light */
             letter-spacing: 3px; /* Slightly reduced for refinement */
             font-size: 64px; /* Reduced from 72px for refinement */
             line-height: 1.2; /* Improved line spacing */
@@ -257,6 +278,13 @@
             position: relative;
             z-index: 2;
             pointer-events: none;  /* Allow events to pass through */
+        }
+
+        /* Use a nearly identical light grotesk just for the 'j' to fix descender */
+        #sample-text .name .alt-j {
+            font-family: 'Plus Jakarta Sans', 'Futura Light', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0; /* keep spacing consistent */
         }
         /* Style for the affiliation in lowercase */
         #sample-text .affiliation {
@@ -276,13 +304,15 @@
         }
         /* Style for Purdue text */
         #sample-text .purdue {
-            color: #666666; /* Darker gray for better contrast */
+            color: #ffffff; /* White for better contrast against sine waves */
             text-transform: capitalize;
         }
         /* "AIM" text styling */
         #bair-text,
         #aim-text,
+        #ual-text,
         #tdm-text,
+        #nsic-text,
         #new-tdm-text,
         #company-text {
             font-family: 'Futura Light', 'Merriweather', sans-serif;
@@ -308,7 +338,15 @@
             color: #fff;
         }
 
+        #ual-text {
+            color: #1a1a1a; /* Darker than pure black for softer contrast */
+        }
+
         #tdm-text {
+            color: #fff;
+        }
+
+        #nsic-text {
             color: #1a1a1a; /* Darker than pure black for softer contrast */
         }
 
@@ -392,6 +430,30 @@
             pointer-events: none;
             z-index: 1;
         }
+        /* White overlay for transition to eighth section */
+        #white-overlay-4 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* Black overlay for transition to ninth section */
+        #black-overlay-4 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
         .scroll-indicator {
             position: absolute;
             bottom: 48px; /* Increased spacing for breathing room */
@@ -419,6 +481,65 @@
             }
         }
         /* Updated footer styles */
+        /* Publications Section - different from full-screen sections */
+        #publications-section {
+            min-height: 50vh;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .publications-container {
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .publications-title {
+            font-family: 'Futura Light', 'Merriweather', sans-serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin: 0 0 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .publications-desc {
+            font-family: 'Futura Light', 'Merriweather', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: #666;
+            margin: 0 0 40px 0;
+            line-height: 1.6;
+        }
+
+        .publications-button {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: 'Futura Light', 'Merriweather', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            background-color: transparent;
+            border: 1px solid rgba(26, 26, 26, 0.4);
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .publications-button:hover {
+            background-color: rgba(26, 26, 26, 0.05);
+            border-color: #1a1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
         footer {
             width: 100%;
             text-align: center;
@@ -501,16 +622,26 @@
 
         #section-4 .project-link::before,
         #section-4 .project-link::after {
-            border-color: #000;  /* Black box for GRAIL (white background) */
+            border-color: #000;  /* Black box for UAL (white background) */
         }
 
         #section-5 .project-link::before,
         #section-5 .project-link::after {
-            border-color: #fff;  /* White box for Klatch (black background) */
+            border-color: #fff;  /* White box for GRAIL (black background) */
         }
 
         #section-6 .project-link::before,
         #section-6 .project-link::after {
+            border-color: #000;  /* Black box for NSIC (white background) */
+        }
+
+        #section-7 .project-link::before,
+        #section-7 .project-link::after {
+            border-color: #fff;  /* White box for Klatch (black background) */
+        }
+
+        #section-8 .project-link::before,
+        #section-8 .project-link::after {
             border-color: #000;  /* Black box for ARC (white background) */
         }
 
@@ -529,7 +660,9 @@
             }
             #bair-text,
             #aim-text,
+            #ual-text,
             #tdm-text,
+            #nsic-text,
             #new-tdm-text,
             #company-text {
                 font-size: 48px; /* Following mathematical ratio */
@@ -559,7 +692,9 @@
             }
             #bair-text,
             #aim-text,
+            #ual-text,
             #tdm-text,
+            #nsic-text,
             #new-tdm-text,
             #company-text {
                 font-size: 36px; /* Following ratio: 64px * 0.56 */
@@ -593,7 +728,9 @@
             }
             #bair-text,
             #aim-text,
+            #ual-text,
             #tdm-text,
+            #nsic-text,
             #new-tdm-text,
             #company-text {
                 font-size: 28px; /* Following ratio: 64px * 0.44 */
@@ -640,40 +777,7 @@
             transition: width 0.2s ease;
         }
 
-        /* Mouse gravity toggle indicator */
-        #gravity-indicator {
-            position: fixed;
-            bottom: 24px; /* Grid-based spacing: 24px (3 × 8px) */
-            right: 24px; /* Grid-based spacing: 24px */
-            padding: 8px 16px; /* Grid-based spacing: 8px, 16px */
-            background: rgba(0, 0, 0, 0.8);
-            color: #cccccc; /* Light gray instead of gold */
-            font-family: 'Futura Light', 'Merriweather', sans-serif;
-            font-size: 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(204, 204, 204, 0.3); /* Gray border */
-            z-index: 3002;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            backdrop-filter: blur(10px);
-            user-select: none;
-        }
-
-        #gravity-indicator.show {
-            opacity: 1;
-        }
-
-        #gravity-indicator.enabled {
-            color: #cccccc; /* Light gray */
-            border-color: rgba(204, 204, 204, 0.5);
-            box-shadow: 0 0 10px rgba(204, 204, 204, 0.2);
-        }
-
-        #gravity-indicator.disabled {
-            color: rgba(255, 255, 255, 0.5);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
+        
 
         /* Click indicator for project links */
         .click-indicator {
@@ -1148,9 +1252,8 @@
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <canvas id="hero-canvas"></canvas>
     <div id="progress-bar"></div>
-    <div id="gravity-indicator">Mouse Gravity: OFF</div>
     <!-- White overlay for section 1 to 2 transition -->
     <div id="white-overlay"></div>
     <!-- Black overlay for section 2 to 3 transition -->
@@ -1163,10 +1266,14 @@
     <div id="white-overlay-3"></div>
     <!-- Black overlay for section 6 to 7 transition -->
     <div id="black-overlay-3"></div>
+    <!-- White overlay for section 7 to 8 transition -->
+    <div id="white-overlay-4"></div>
+    <!-- Black overlay for section 8 to 9 transition -->
+    <div id="black-overlay-4"></div>
     
     <section id="section-1">
         <div id="sample-text">
-            <span class="name">kayshav bhardwaj</span>
+            <span class="name">kayshav bhardwa<span class="alt-j">j</span></span>
             <span class="affiliation">Research Fellow @ <span class="purdue">Purdue</span></span>
             <a href="Kayshav_Bhardwaj_Resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-button">View Resume</a>
         </div>
@@ -1190,14 +1297,30 @@
     </section>
     
     <section id="section-4">
-        <a href="grail.html" class="project-link">
-            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
+        <a href="ual.html" class="project-link">
+            <div id="ual-text">University of Arts London - MusicRAI</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
         <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-5">
+        <a href="grail.html" class="project-link">
+            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
+            <div class="click-indicator light">click to view <span class="arrow">→</span></div>
+        </a>
+        <div class="scroll-indicator">scroll down</div>
+    </section>
+    
+    <section id="section-6">
+        <a href="nsic.html" class="project-link">
+            <div id="nsic-text">National Space Intelligence Center (NSIC)</div>
+            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
+        </a>
+        <div class="scroll-indicator dark">scroll down</div>
+    </section>
+    
+    <section id="section-7">
         <a href="klatch.html" class="project-link">
             <div id="new-tdm-text">Klatch</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
@@ -1205,7 +1328,7 @@
         <div class="scroll-indicator">scroll down</div>
     </section>
     
-    <section id="section-6">
+    <section id="section-8">
         <a href="arc.html" class="project-link">
             <div id="company-text">Autonomous Robotics Club (ARC)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
@@ -1270,6 +1393,15 @@
     </div>
     -->
     
+    <!-- Publications Section -->
+    <section id="publications-section">
+        <div class="publications-container">
+            <h2 class="publications-title">Publications</h2>
+            <p class="publications-desc">Explore my research publications and academic contributions.</p>
+            <a href="publications.html" class="publications-button">View Publications</a>
+        </div>
+    </section>
+    
     <!-- Footer placed after all sections -->
     <footer>
         <div class="footer-content">
@@ -1285,416 +1417,109 @@
     </footer>
     
     <script>
-        // Custom gravitational particle system
-        let particles = [];
-        let canvas, ctx;
-        let mouseX = 0;
-        let mouseY = 0;
-        let mouseGravityEnabled = false; // Toggle for mouse gravity - starts off
-        
-        // Gravitational physics constants
-        const G = 0.06; // Further reduced gravitational constant
-        const mouseMass = 1800; // Much lighter mouse influence
-        const particleMass = 1; // Standard particle mass
-        const softening = 40; // Increased softening for smoother interactions
-        const damping = 0.995; // Increased damping for more elegant movement
-        
-        // Track mouse position
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+        // Minimal hero: Radial Music Bloom (morphing polar waveform)
+        (function() {
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let width = 0, height = 0, dpr = Math.max(1, window.devicePixelRatio || 1);
+            let time = 0;
 
-        // Toggle mouse gravity on click
-        document.addEventListener('click', (e) => {
-            // Don't toggle if clicking on project links
-            if (e.target.closest('a')) return;
-            
-            mouseGravityEnabled = !mouseGravityEnabled;
-            updateGravityIndicator();
-            
-            // Visual feedback - briefly show the mouse influence area
-            if (mouseGravityEnabled) {
-                showMouseInfluenceIndicator();
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
-        });
+            resize();
+            window.addEventListener('resize', resize);
 
-        // Update the gravity indicator
-        function updateGravityIndicator() {
-            const indicator = document.getElementById('gravity-indicator');
-            if (!indicator) return;
-            
-            indicator.textContent = `Mouse Gravity: ${mouseGravityEnabled ? 'ON' : 'OFF'}`;
-            indicator.className = `show ${mouseGravityEnabled ? 'enabled' : 'disabled'}`;
-            
-            // Hide after 2 seconds
-            setTimeout(() => {
-                indicator.classList.remove('show');
-            }, 2000);
-        }
+            function drawBackground() {
+                const g = ctx.createRadialGradient(width*0.5, height*0.5, 0, width*0.5, height*0.5, Math.max(width,height)*0.7);
+                g.addColorStop(0, 'rgba(6,6,6,1)');
+                g.addColorStop(1, 'rgba(0,0,0,1)');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, width, height);
+            }
 
-        // Visual feedback function
-        function showMouseInfluenceIndicator() {
-            if (!ctx) return;
-            
-            // Create a temporary visual indicator
-            const originalFillStyle = ctx.fillStyle;
-            const fadeRadius = 150;
-            
-            let opacity = 0.3;
-            const fadeInterval = setInterval(() => {
-                // Clear and redraw the influence area
-                const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, fadeRadius);
-                gradient.addColorStop(0, `rgba(207, 185, 145, ${opacity})`); // Gold color
-                gradient.addColorStop(1, 'rgba(207, 185, 145, 0)');
-                
-                ctx.fillStyle = gradient;
+            function drawCurtains() {
+                // Sonic Silk: stacked sinusoidal curtains spanning full page
+                // Layers with slight phase drift evoke harmonic overtones
+                ctx.save();
                 ctx.globalCompositeOperation = 'screen';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.globalCompositeOperation = 'source-over';
-                
-                opacity -= 0.02;
-                if (opacity <= 0) {
-                    clearInterval(fadeInterval);
-                    ctx.fillStyle = originalFillStyle;
-                }
-            }, 16);
-        }
 
-        // Initialize custom particle system
-        function initParticles() {
-            const section = document.getElementById('section-1');
-            canvas = document.createElement('canvas');
-            ctx = canvas.getContext('2d');
-            canvas.style.position = 'absolute';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '1';
-            section.appendChild(canvas);
-            
-            // Set canvas size
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            
-            // Create particles
-            particles = [];
-            for (let i = 0; i < 400; i++) { // Doubled the particle count
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5, // Reduced initial velocity
-                    vy: (Math.random() - 0.5) * 0.5, // Reduced initial velocity
-                    // Add drift for non-gravity movement
-                    driftVx: (Math.random() - 0.5) * 0.3,
-                    driftVy: (Math.random() - 0.5) * 0.3,
-                    mass: particleMass * (0.5 + Math.random() * 1.5),
-                    size: 2, // Uniform small size like original
-                    opacity: 0.15 // Restored original opacity
-                });
-            }
-        }
+                const layers = [
+                    { amp: 60, freq: 0.0014, speed: 0.00025, alpha: 0.18 },
+                    { amp: 40, freq: 0.0021, speed: 0.00035, alpha: 0.14 },
+                    { amp: 28, freq: 0.0032, speed: 0.0005,  alpha: 0.10 }
+                ];
 
-        // Draw particles and connections
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Constants for mouse interaction
-            const mouseInteractionRadius = 120;
-            const mouseConnectionRadius = 100;
-            
-            // Draw connection lines
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[j].x - particles[i].x;
-                    const dy = particles[j].y - particles[i].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 150) {
-                        const opacity = (1 - distance / 150) * 0.1;
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                for (let li = 0; li < layers.length; li++) {
+                    const L = layers[li];
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                    for (let x = -20; x <= width + 20; x += 2) {
+                        // base vertical sweep; y determined by summed sines
+                        const phase = time * L.speed + li * 1.7;
+                        const wobble = Math.sin(x * L.freq * 950 + phase) * L.amp
+                                      + Math.sin(x * L.freq * 520 - phase * 0.7) * (L.amp * 0.45)
+                                      + Math.sin(x * L.freq * 270 + phase * 1.3) * (L.amp * 0.25);
+                        const y = height * 0.5 + wobble;
+                        if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
                     }
-                }
-            }
-            
-            // Draw mouse connections first (so they appear behind particles)
-            particles.forEach(particle => {
-                const mouseDx = mouseX - particle.x;
-                const mouseDy = mouseY - particle.y;
-                const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-                
-                if (mouseDistance < mouseConnectionRadius) {
-                    const connectionOpacity = (1 - mouseDistance / mouseConnectionRadius) * 0.3;
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${connectionOpacity})`;
-                    ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                    ctx.moveTo(particle.x, particle.y);
-                    ctx.lineTo(mouseX, mouseY);
+                    ctx.strokeStyle = `rgba(255,255,255,${L.alpha})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.shadowColor = 'rgba(255,255,255,0.16)';
+                    ctx.shadowBlur = 10;
                     ctx.stroke();
                 }
-            });
-            
-            // Draw particles with mouse interaction effects
-            particles.forEach(particle => {
-                const mouseDx = mouseX - particle.x;
-                const mouseDy = mouseY - particle.y;
-                const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-                
-                let particleOpacity = particle.opacity;
-                let particleSize = particle.size;
-                
-                // Enhance particles near mouse
-                if (mouseDistance < mouseInteractionRadius) {
-                    const proximity = 1 - (mouseDistance / mouseInteractionRadius);
-                    particleOpacity = Math.min(1, particle.opacity + proximity * 0.6);
-                    particleSize = particle.size + proximity * 2;
-                    
-                    // Add a subtle glow effect
-                    const glowRadius = particleSize + proximity * 8;
-                    const glowGradient = ctx.createRadialGradient(
-                        particle.x, particle.y, 0,
-                        particle.x, particle.y, glowRadius
-                    );
-                    glowGradient.addColorStop(0, `rgba(255, 255, 255, ${proximity * 0.1})`);
-                    glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    
-                    ctx.fillStyle = glowGradient;
+
+                // Fine threads overlay
+                ctx.shadowBlur = 0;
+                for (let li = 0; li < layers.length; li++) {
+                    const L = layers[li];
                     ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, glowRadius, 0, Math.PI * 2);
-                    ctx.fill();
+                    for (let x = -20; x <= width + 20; x += 4) {
+                        const phase = time * (L.speed * 1.2) + li * 2.3;
+                        const wobble = Math.sin(x * L.freq * 1050 + phase) * (L.amp * 0.35)
+                                      + Math.sin(x * L.freq * 640 - phase * 0.9) * (L.amp * 0.22);
+                        const y = height * 0.5 + wobble * 0.7;
+                        if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                    }
+                    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                    ctx.lineWidth = 0.6;
+                    ctx.stroke();
                 }
-                
-                // Draw the main particle
-                ctx.fillStyle = `rgba(255, 255, 255, ${particleOpacity})`;
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particleSize, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            
-            // Draw mouse influence (only when gravity is enabled)
-            if (mouseGravityEnabled) {
-                const mouseInfluenceRadius = 200;
-                const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, mouseInfluenceRadius);
-                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.02)');
-                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                ctx.fillStyle = gradient;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.restore();
             }
-        }
 
-        // Gravitationally accurate physics simulation
-        function updateParticles() {
-            particles.forEach((particle, i) => {
-                let fx = 0, fy = 0;
-                
-                if (mouseGravityEnabled) {
-                    // Mouse gravitational attraction (only if enabled)
-                    const mouseDx = mouseX - particle.x;
-                    const mouseDy = mouseY - particle.y;
-                    const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy + softening * softening);
-                    
-                    if (mouseDistance > 0) {
-                        const mouseForce = G * mouseMass * particle.mass / (mouseDistance * mouseDistance * mouseDistance);
-                        fx += mouseDx * mouseForce;
-                        fy += mouseDy * mouseForce;
-                    }
-                    
-                    // Particle-to-particle gravitational attraction
-                    particles.forEach((otherParticle, j) => {
-                        if (i !== j) {
-                            const dx = otherParticle.x - particle.x;
-                            const dy = otherParticle.y - particle.y;
-                            const distance = Math.sqrt(dx * dx + dy * dy + softening * softening);
-                            
-                            if (distance > 0) {
-                                const force = G * particle.mass * otherParticle.mass / (distance * distance * distance);
-                                fx += dx * force;
-                                fy += dy * force;
-                            }
-                        }
-                    });
-                    
-                    // Apply gravitational forces to velocity
-                    particle.vx += fx / particle.mass;
-                    particle.vy += fy / particle.mass;
-                    
-                    // Apply damping
-                    particle.vx *= damping;
-                    particle.vy *= damping;
-                    
-                    // Update position
-                    particle.x += particle.vx;
-                    particle.y += particle.vy;
-                } else {
-                    // When gravity is off, use slow drift movement
-                    particle.x += particle.driftVx;
-                    particle.y += particle.driftVy;
-                    
-                    // Occasionally change drift direction slightly
-                    if (Math.random() < 0.01) {
-                        particle.driftVx += (Math.random() - 0.5) * 0.05;
-                        particle.driftVy += (Math.random() - 0.5) * 0.05;
-                        
-                        // Keep drift speed reasonable
-                        const speed = Math.sqrt(particle.driftVx * particle.driftVx + particle.driftVy * particle.driftVy);
-                        if (speed > 0.5) {
-                            particle.driftVx = (particle.driftVx / speed) * 0.5;
-                            particle.driftVy = (particle.driftVy / speed) * 0.5;
-                        }
-                    }
-                }
-                
-                // Boundary conditions - random edge distribution
-                if (particle.x < 0) {
-                    // Randomly place on any edge
-                    const edge = Math.floor(Math.random() * 4);
-                    switch(edge) {
-                        case 0: // Top edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = 0;
-                            break;
-                        case 1: // Right edge
-                            particle.x = canvas.width;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                        case 2: // Bottom edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = canvas.height;
-                            break;
-                        case 3: // Left edge
-                            particle.x = 0;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                    }
-                    if (mouseGravityEnabled) {
-                        particle.vx *= 0.2; // Dampen velocity when repositioning
-                        particle.vy *= 0.2;
-                    } else {
-                        particle.driftVx = (Math.random() - 0.5) * 0.3;
-                        particle.driftVy = (Math.random() - 0.5) * 0.3;
-                    }
-                }
-                if (particle.x > canvas.width) {
-                    // Randomly place on any edge
-                    const edge = Math.floor(Math.random() * 4);
-                    switch(edge) {
-                        case 0: // Top edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = 0;
-                            break;
-                        case 1: // Right edge
-                            particle.x = canvas.width;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                        case 2: // Bottom edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = canvas.height;
-                            break;
-                        case 3: // Left edge
-                            particle.x = 0;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                    }
-                    if (mouseGravityEnabled) {
-                        particle.vx *= 0.2; // Dampen velocity when repositioning
-                        particle.vy *= 0.2;
-                    } else {
-                        particle.driftVx = (Math.random() - 0.5) * 0.3;
-                        particle.driftVy = (Math.random() - 0.5) * 0.3;
-                    }
-                }
-                if (particle.y < 0) {
-                    // Randomly place on any edge
-                    const edge = Math.floor(Math.random() * 4);
-                    switch(edge) {
-                        case 0: // Top edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = 0;
-                            break;
-                        case 1: // Right edge
-                            particle.x = canvas.width;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                        case 2: // Bottom edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = canvas.height;
-                            break;
-                        case 3: // Left edge
-                            particle.x = 0;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                    }
-                    if (mouseGravityEnabled) {
-                        particle.vx *= 0.2; // Dampen velocity when repositioning
-                        particle.vy *= 0.2;
-                    } else {
-                        particle.driftVx = (Math.random() - 0.5) * 0.3;
-                        particle.driftVy = (Math.random() - 0.5) * 0.3;
-                    }
-                }
-                if (particle.y > canvas.height) {
-                    // Randomly place on any edge
-                    const edge = Math.floor(Math.random() * 4);
-                    switch(edge) {
-                        case 0: // Top edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = 0;
-                            break;
-                        case 1: // Right edge
-                            particle.x = canvas.width;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                        case 2: // Bottom edge
-                            particle.x = Math.random() * canvas.width;
-                            particle.y = canvas.height;
-                            break;
-                        case 3: // Left edge
-                            particle.x = 0;
-                            particle.y = Math.random() * canvas.height;
-                            break;
-                    }
-                    if (mouseGravityEnabled) {
-                        particle.vx *= 0.2; // Dampen velocity when repositioning
-                        particle.vy *= 0.2;
-                    } else {
-                        particle.driftVx = (Math.random() - 0.5) * 0.3;
-                        particle.driftVy = (Math.random() - 0.5) * 0.3;
-                    }
-                }
-            });
-        }
+            function tick() {
+                time += 16;
+                ctx.clearRect(0, 0, width, height);
+                drawBackground();
+                drawCurtains();
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
 
-        // Main animation loop
-        function animate() {
-            updateParticles();
-            drawParticles();
-            requestAnimationFrame(animate);
-        }
-        
-        // Initialize and start the system
-        setTimeout(() => {
-            initParticles();
-            animate();
-            // Show initial gravity state
-            updateGravityIndicator();
-        }, 100);
+        // Minimal pointer vars and physics constants for optional timeline system
+        let mouseX = -1, mouseY = -1;
+        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        window.addEventListener('mouseleave', () => { mouseX = -1; mouseY = -1; });
+        const G = 0.06;
+        const mouseMass = 1800;
+        const particleMass = 1;
+        const damping = 0.995;
 
         const sampleText = document.getElementById('sample-text');
         const bairText = document.getElementById('bair-text');
         const aimText = document.getElementById('aim-text');
+        const ualText = document.getElementById('ual-text');
         const tdmText = document.getElementById('tdm-text');
+        const nsicText = document.getElementById('nsic-text');
         const newTdmText = document.getElementById('new-tdm-text');
         const companyText = document.getElementById('company-text');
         const whiteOverlay = document.getElementById('white-overlay');
@@ -1703,6 +1528,8 @@
         const blackOverlay2 = document.getElementById('black-overlay-2');
         const whiteOverlay3 = document.getElementById('white-overlay-3');
         const blackOverlay3 = document.getElementById('black-overlay-3');
+        const whiteOverlay4 = document.getElementById('white-overlay-4');
+        const blackOverlay4 = document.getElementById('black-overlay-4');
         const sections = document.querySelectorAll('section');
         const projectLinks = document.querySelectorAll('.project-link');
 
@@ -1719,6 +1546,8 @@
                 blackOverlay2.style.opacity = 0;
                 whiteOverlay3.style.opacity = 0;
                 blackOverlay3.style.opacity = 0;
+                whiteOverlay4.style.opacity = 0;
+                blackOverlay4.style.opacity = 0;
             }
             
             // First transition (black to white, section 1 to 2)
@@ -1763,7 +1592,7 @@
                 }
             }
             
-            // Third transition
+            // Third transition (AI4Musicians to UAL)
             const thirdTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 2) / windowHeight, 1));
             
             // Reset white overlay 2 when scrolling above third section
@@ -1777,15 +1606,15 @@
                 aimText.style.opacity = 1 - thirdTransitionProgress;
                 
                 if (thirdTransitionProgress > 0.5) {
-                    tdmText.style.opacity = (thirdTransitionProgress - 0.5) * 2;
-                    tdmText.style.transform = 'translateY(0)';
+                    ualText.style.opacity = (thirdTransitionProgress - 0.5) * 2;
+                    ualText.style.transform = 'translateY(0)';
                 } else {
-                    tdmText.style.opacity = 0;
-                    tdmText.style.transform = 'translateY(50px)';
+                    ualText.style.opacity = 0;
+                    ualText.style.transform = 'translateY(50px)';
                 }
             }
             
-            // Fourth transition
+            // Fourth transition (UAL to GRAIL)
             const fourthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 3) / windowHeight, 1));
             
             // Reset black overlay 2 when scrolling above fourth section
@@ -1796,18 +1625,18 @@
             }
             
             if (fourthTransitionProgress > 0) {
-                tdmText.style.opacity = 1 - fourthTransitionProgress;
+                ualText.style.opacity = 1 - fourthTransitionProgress;
                 
                 if (fourthTransitionProgress > 0.5) {
-                    newTdmText.style.opacity = (fourthTransitionProgress - 0.5) * 2;
-                    newTdmText.style.transform = 'translateY(0)';
+                    tdmText.style.opacity = (fourthTransitionProgress - 0.5) * 2;
+                    tdmText.style.transform = 'translateY(0)';
                 } else {
-                    newTdmText.style.opacity = 0;
-                    newTdmText.style.transform = 'translateY(50px)';
+                    tdmText.style.opacity = 0;
+                    tdmText.style.transform = 'translateY(50px)';
                 }
             }
             
-            // Fifth transition
+            // Fifth transition (GRAIL to NSIC)
             const fifthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 4) / windowHeight, 1));
             
             // Reset white overlay 3 when scrolling above fifth section
@@ -1818,10 +1647,54 @@
             }
             
             if (fifthTransitionProgress > 0) {
-                newTdmText.style.opacity = 1 - fifthTransitionProgress;
+                tdmText.style.opacity = 1 - fifthTransitionProgress;
                 
                 if (fifthTransitionProgress > 0.5) {
-                    companyText.style.opacity = (fifthTransitionProgress - 0.5) * 2;
+                    nsicText.style.opacity = (fifthTransitionProgress - 0.5) * 2;
+                    nsicText.style.transform = 'translateY(0)';
+                } else {
+                    nsicText.style.opacity = 0;
+                    nsicText.style.transform = 'translateY(50px)';
+                }
+            }
+            
+            // Sixth transition (NSIC to Klatch)
+            const sixthTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 5) / windowHeight, 1));
+            
+            // Reset black overlay 3 when scrolling above sixth section
+            if (scrollPosition < windowHeight * 5) {
+                blackOverlay3.style.opacity = 0;
+            } else {
+                blackOverlay3.style.opacity = sixthTransitionProgress;
+            }
+            
+            if (sixthTransitionProgress > 0) {
+                nsicText.style.opacity = 1 - sixthTransitionProgress;
+                
+                if (sixthTransitionProgress > 0.5) {
+                    newTdmText.style.opacity = (sixthTransitionProgress - 0.5) * 2;
+                    newTdmText.style.transform = 'translateY(0)';
+                } else {
+                    newTdmText.style.opacity = 0;
+                    newTdmText.style.transform = 'translateY(50px)';
+                }
+            }
+            
+            // Seventh transition (Klatch to ARC)
+            const seventhTransitionProgress = Math.max(0, Math.min((scrollPosition - windowHeight * 6) / windowHeight, 1));
+            
+            // Reset white overlay 4 when scrolling above seventh section
+            if (scrollPosition < windowHeight * 6) {
+                whiteOverlay4.style.opacity = 0;
+            } else {
+                whiteOverlay4.style.opacity = seventhTransitionProgress;
+            }
+            
+            if (seventhTransitionProgress > 0) {
+                newTdmText.style.opacity = 1 - seventhTransitionProgress;
+                
+                if (seventhTransitionProgress > 0.5) {
+                    companyText.style.opacity = (seventhTransitionProgress - 0.5) * 2;
                     companyText.style.transform = 'translateY(0)';
                 } else {
                     companyText.style.opacity = 0;
