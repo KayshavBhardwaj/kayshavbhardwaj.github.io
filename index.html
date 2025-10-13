@@ -465,6 +465,7 @@
             line-height: 1.4; /* Better spacing */
             font-family: 'Futura Light', 'Merriweather', sans-serif;
             animation: bounce 2s infinite;
+            z-index: 10; /* Ensure it's above canvas and other elements */
         }
         .scroll-indicator.dark {
             color: rgba(26, 26, 26, 0.6); /* Darker gray for better contrast */
@@ -1285,7 +1286,6 @@
             <div id="bair-text">Berkeley AI Research Lab (BAIR)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-3">
@@ -1293,7 +1293,6 @@
             <div id="aim-text">AI4Musicians Lab</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator">scroll down</div>
     </section>
     
     <section id="section-4">
@@ -1301,7 +1300,6 @@
             <div id="ual-text">University of Arts London - MusicRAI</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-5">
@@ -1309,7 +1307,6 @@
             <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator">scroll down</div>
     </section>
     
     <section id="section-6">
@@ -1317,7 +1314,6 @@
             <div id="nsic-text">National Space Intelligence Center (NSIC)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <section id="section-7">
@@ -1325,7 +1321,6 @@
             <div id="new-tdm-text">Klatch</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator">scroll down</div>
     </section>
     
     <section id="section-8">
@@ -1333,7 +1328,6 @@
             <div id="company-text">Autonomous Robotics Club (ARC)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
-        <div class="scroll-indicator dark">scroll down</div>
     </section>
     
     <!-- Timeline section commented out
