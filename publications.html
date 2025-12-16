@@ -31,9 +31,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             text-align: center;
+            padding-top: 100px;
         }
 
         h1 {
@@ -41,15 +41,78 @@
             font-size: 64px;
             font-weight: 300;
             letter-spacing: 3px;
-            margin-bottom: 16px;
+            margin-bottom: 64px;
             color: #fff;
         }
 
-        .subtext {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 48px;
+        h2 {
+            font-family: 'Futura Light', sans-serif;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin: 16px 0 32px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+        }
+
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            max-width: 800px;
+            width: 90%;
+            margin-bottom: 64px;
+        }
+
+        .publication-item {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .publication-item:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .pub-title {
+            font-size: 24px;
             letter-spacing: 1px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .pub-conference {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .pub-authors {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+        }
+
+        .pub-link {
+            margin-top: 16px;
+            display: inline-block;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            opacity: 0.7;
+        }
+
+        .publication-item:hover .pub-link {
+            opacity: 1;
         }
 
         .back-button {
@@ -66,6 +129,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
+            margin-bottom: 48px;
         }
 
         .back-button:hover {
@@ -76,14 +140,38 @@
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
         }
 
+        .profile-links {
+            margin-bottom: 48px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .profile-links a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            margin: 0 12px;
+        }
+
+        .profile-links a:hover {
+            border-color: #fff;
+            opacity: 1;
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 42px;
                 letter-spacing: 2px;
             }
-
-            .subtext {
-                font-size: 14px;
+            
+            .pub-title {
+                font-size: 20px;
             }
 
             .back-button {
@@ -95,8 +183,56 @@
 </head>
 <body>
     <h1>Publications</h1>
-    <p class="subtext">selected works. coming soon.</p>
+    
+    <div class="profile-links">
+        <a href="https://github.com/kayshavbhardwaj" target="_blank">GitHub</a>
+        <span class="separator">|</span>
+        <a href="https://scholar.google.com/citations?user=DmO2Zv0AAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
+        <span class="separator">|</span>
+        <a href="https://www.researchgate.net/profile/Kayshav-Bhardwaj" target="_blank">ResearchGate</a>
+        <span class="separator">|</span>
+        <a href="https://orcid.org/0009-0002-2298-7195" target="_blank">ORCID</a>
+    </div>
+
+    <div class="publications-list">
+        <a href="https://openreview.net/pdf?id=NG187AZ71W" target="_blank" class="publication-item">
+            <div class="pub-title">Advancing Multi-Instrument Music Transcription: Results from the 2025 AMT Challenge</div>
+            <div class="pub-conference">NeurIPS 2025 AI For Music Workship</div>
+            <div class="pub-authors">Ojas Chaturvedi, Kayshav Bhardwaj, Tanay Gondil, Benjamin Shiue-Hal Chou, Kristen Yeon-Ji Yun, Yung-Hsiang Lu, Yujia Yan, Sungkyun Chang</div>
+            <span class="pub-link">Read Paper &rarr;</span>
+        </a>
+    </div>
+
+    <h2>In Progress</h2>
+
+    <div class="publications-list">
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Research on Automatic Music Transcription</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">AI4Musicians Lab</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Sanskrit Optical Character Recognition Using AI</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">Berkeley AI Research Lab (BAIR)</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Machine Learning for Satellite GNSS Signal Anomaly Detection</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">Data Mine of the Rockies, National Space Intelligence Center (NSIC), KBR</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Systematic Literature Review on AI's Impact on the Workforce</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">GRAIL Lab</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+
+    </div>
+
     <a href="index.html" class="back-button">Back to Home</a>
 </body>
 </html>
-
