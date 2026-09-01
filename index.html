@@ -109,6 +109,10 @@
             /* Subtle warm gray instead of pure white */
         }
 
+        #section-9 {
+            background-color: #000;
+        }
+
         /* Disable rotating backdrop on hero to keep aurora clean */
         #section-1::before {
             display: none;
@@ -358,7 +362,8 @@
             text-transform: capitalize;
         }
 
-        /* "AIM" text styling */
+        /* Project title styling */
+        #action-text,
         #bair-text,
         #aim-text,
         #ual-text,
@@ -388,36 +393,36 @@
             opacity: 0;
         }
 
-        #bair-text {
+        #action-text {
             color: #1a1a1a;
-            /* Darker than pure black for softer contrast */
+        }
+
+        #bair-text {
+            color: #fff;
         }
 
         #aim-text {
-            color: #fff;
+            color: #1a1a1a;
         }
 
         #ual-text {
-            color: #1a1a1a;
-            /* Darker than pure black for softer contrast */
+            color: #fff;
         }
 
         #tdm-text {
-            color: #fff;
+            color: #1a1a1a;
         }
 
         #nsic-text {
-            color: #1a1a1a;
-            /* Darker than pure black for softer contrast */
-        }
-
-        #new-tdm-text {
             color: #fff;
         }
 
-        #company-text {
+        #new-tdm-text {
             color: #1a1a1a;
-            /* Darker than pure black for softer contrast */
+        }
+
+        #company-text {
+            color: #fff;
         }
 
         /* White overlay to create the fade-to-white effect */
@@ -706,10 +711,15 @@
         #section-6 .project-link { color: #000; }
         #section-7 .project-link { color: #fff; }
         #section-8 .project-link { color: #000; }
+        #section-9 .project-link { color: #fff; }
 
         /* Remove any previous hover transforms */
+        section a:hover #action-text,
+        section a:hover #bair-text,
         section a:hover #aim-text,
+        section a:hover #ual-text,
         section a:hover #tdm-text,
+        section a:hover #nsic-text,
         section a:hover #new-tdm-text,
         section a:hover #company-text {
             transform: none;
@@ -722,6 +732,7 @@
                 /* Professional side margins */
             }
 
+            #action-text,
             #bair-text,
             #aim-text,
             #ual-text,
@@ -765,6 +776,7 @@
                 line-height: 1.4;
             }
 
+            #action-text,
             #bair-text,
             #aim-text,
             #ual-text,
@@ -815,6 +827,7 @@
                 line-height: 1.4;
             }
 
+            #action-text,
             #bair-text,
             #aim-text,
             #ual-text,
@@ -1494,51 +1507,58 @@
     </section>
 
     <section id="section-2">
-        <a href="bair.html" class="project-link">
-            <div id="bair-text">Berkeley AI Research Lab (BAIR)</div>
+        <a href="action.html" class="project-link">
+            <div id="action-text">ACTION NSF Artificial Intelligence Institute</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-3">
-        <a href="ai4musicians.html" class="project-link">
-            <div id="aim-text">AI4Musicians Lab</div>
+        <a href="bair.html" class="project-link">
+            <div id="bair-text">Berkeley AI Research Lab (BAIR)</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-4">
-        <a href="ual.html" class="project-link">
-            <div id="ual-text">MusicRAI - University of the Arts London</div>
+        <a href="ai4musicians.html" class="project-link">
+            <div id="aim-text">AI4Musicians Lab</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-5">
-        <a href="grail.html" class="project-link">
-            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
+        <a href="ual.html" class="project-link">
+            <div id="ual-text">MusicRAI - University of the Arts London</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-6">
-        <a href="nsic.html" class="project-link">
-            <div id="nsic-text">National Space Intelligence Center (NSIC)</div>
+        <a href="grail.html" class="project-link">
+            <div id="tdm-text">Governance & Responsible AI Lab (GRAIL)</div>
             <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-7">
-        <a href="klatch.html" class="project-link">
-            <div id="new-tdm-text">Klatch</div>
+        <a href="nsic.html" class="project-link">
+            <div id="nsic-text">National Space Intelligence Center (NSIC)</div>
             <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
     <section id="section-8">
+        <a href="klatch.html" class="project-link">
+            <div id="new-tdm-text">Klatch</div>
+            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
+        </a>
+    </section>
+
+    <section id="section-9">
         <a href="arc.html" class="project-link">
             <div id="company-text">Autonomous Robotics Club (ARC)</div>
-            <div class="click-indicator dark">click to view <span class="arrow">→</span></div>
+            <div class="click-indicator light">click to view <span class="arrow">→</span></div>
         </a>
     </section>
 
@@ -1769,6 +1789,7 @@
         const damping = 0.995;
 
         const sampleText = document.getElementById('sample-text');
+        const actionText = document.getElementById('action-text');
         const bairText = document.getElementById('bair-text');
         const aimText = document.getElementById('aim-text');
         const ualText = document.getElementById('ual-text');
@@ -1797,9 +1818,11 @@
             blackOverlay2,
             whiteOverlay3,
             blackOverlay3,
-            whiteOverlay4
+            whiteOverlay4,
+            blackOverlay4
         ];
         const projectTexts = [
+            actionText,
             bairText,
             aimText,
             ualText,
@@ -1831,8 +1854,9 @@
             const vh = window.innerHeight;
             const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
 
-            const p = new Array(7);
-            for (let i = 0; i < 7; i++) {
+            const n = overlays.length;
+            const p = new Array(n);
+            for (let i = 0; i < n; i++) {
                 p[i] = clamp01((scrollY - vh * i) / vh);
             }
 
@@ -1845,14 +1869,14 @@
             setTransform(progressBar, 'scaleX(' + (scrollY / maxScroll) + ')');
 
             // Stacked overlays track scroll 1:1 (linear), matching the original dissolves
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < n; i++) {
                 setOpacity(overlays[i], p[i]);
             }
 
             // Titles: incoming after halfway, outgoing immediately on the next transition
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < projectTexts.length; i++) {
                 const inP = p[i];
-                const outP = i < 6 ? p[i + 1] : 0;
+                const outP = i < n - 1 ? p[i + 1] : 0;
                 const el = projectTexts[i];
                 if (outP > 0) {
                     setOpacity(el, 1 - outP);
