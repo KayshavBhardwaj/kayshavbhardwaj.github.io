@@ -270,6 +270,44 @@
             color: #fff;
         }
 
+
+        .pub-card {
+            max-width: 640px;
+            margin: 8px auto 0;
+            padding: 28px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            text-align: left;
+        }
+
+        .pub-card .pub-venue {
+            margin: 0 0 10px;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .pub-card .pub-title {
+            margin: 0 0 14px;
+            font-size: 22px;
+            line-height: 1.35;
+            color: #fff;
+        }
+
+        .content-section .pub-card p {
+            max-width: none;
+            margin: 0 0 14px;
+            text-align: left;
+        }
+
+        .content-section .pub-card .pub-note {
+            margin: 0;
+            font-size: 14px;
+            color: #888;
+        }
+
         @keyframes fadeIn { to { opacity: 1; } }
         @keyframes fadeInUp {
             to {
@@ -300,7 +338,7 @@
 
     <div class="page-wrapper">
         <header class="page-header">
-            <a href="index.html" class="back-link">
+            <a href="index.html#action" class="back-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                 Back to Home
             </a>
@@ -325,24 +363,38 @@
         <main class="main-content">
             <section class="content-section" style="--delay: 0.8s;">
                 <h2>Overview</h2>
-                <p>I am a research fellow at the NSF ACTION Institute (AI Institute for Agent-based Cyber Threat Intelligence and Operation), hosted at UC Santa Barbara for the 2026 summer research program. Working with Dr. Yigitcan Kaya in UCSB's SecLab, I study token entanglement and subliminal learning in large language models, specifically whether hidden system-prompt secrets leak into unrelated outputs through likelihood-based inference.</p>
+                <p>I am a research fellow at the NSF ACTION Institute (AI Institute for Agent-based Cyber Threat Intelligence and Operation), hosted at UC Santa Barbara for the 2026 summer research program. Working with Dr. Yigitcan Kaya in UCSB's SecLab, I study token entanglement and subliminal learning in large language models: whether secrets hidden in a system prompt leak into unrelated outputs through likelihood-based inference. Our first paper was accepted at the NeurIPS 2026 InfPriv workshop, and we are continuing the work toward a follow-up paper.</p>
                 <div class="tags-container">
                     <span class="tag-item">NSF ACTION Institute</span>
                     <span class="tag-item">AI Security</span>
+                    <span class="tag-item">AI Privacy</span>
                     <span class="tag-item">Large Language Models</span>
-                    <span class="tag-item">Cybersecurity</span>
                     <span class="tag-item">Research</span>
                 </div>
             </section>
 
             <hr class="divider" />
             
+            <section class="content-section" style="--delay: 0.9s;">
+                <h2>Publication</h2>
+                <div class="pub-card">
+                    <p class="pub-venue">NeurIPS 2026 Workshop &middot; Beyond Private Training: The New Landscape of AI Privacy (InfPriv)</p>
+                    <p class="pub-title">LLMs Leak Secrets Through Unrelated Outputs</p>
+                    <p>First author. LLMs can statistically leak secrets through unrelated outputs without reproducing them: a white-box likelihood attack identifies a hidden PIN from one strictly filtered number list and recovers 48% of held-out PINs from repeated outputs.</p>
+                    <p class="pub-note">Paper link will be available soon, once OpenReview makes it public.</p>
+                </div>
+            </section>
+
+            <hr class="divider" />
+
             <section class="content-section" style="--delay: 1s;">
                 <h2>Key Achievements</h2>
                 <ul class="achievements-list">
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Researching token entanglement in subliminal learning within LLMs under Dr. Yigitcan Kaya at UC Santa Barbara.</span></li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Investigating whether hidden system-prompt secrets leak into unrelated outputs via likelihood-based inference.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>First-author paper accepted at the NeurIPS 2026 InfPriv workshop.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Showed that LLMs can statistically leak secret PINs through unrelated outputs without ever reproducing them.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Built a white-box likelihood attack that identifies a hidden PIN from a single strictly filtered number list and recovers 48% of held-out PINs from repeated outputs.</span></li>
                     <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Designed a multi-stage pipeline of logit probes, ablations, cross-model attacks, and prompt ladders across 14+ conditions to characterize when LLM instruction secrets become recoverable.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Continuing the research with the team toward a follow-up paper.</span></li>
                 </ul>
             </section>
 
@@ -354,6 +406,7 @@
                     <span class="tag-item">Python</span>
                     <span class="tag-item">Large Language Models</span>
                     <span class="tag-item">Logit Probes</span>
+                    <span class="tag-item">Likelihood Attacks</span>
                     <span class="tag-item">Ablation Studies</span>
                     <span class="tag-item">Prompt Analysis</span>
                 </div>

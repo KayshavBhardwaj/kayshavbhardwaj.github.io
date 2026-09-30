@@ -270,6 +270,44 @@
             color: #fff;
         }
 
+
+        .pub-card {
+            max-width: 640px;
+            margin: 8px auto 0;
+            padding: 28px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            text-align: left;
+        }
+
+        .pub-card .pub-venue {
+            margin: 0 0 10px;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .pub-card .pub-title {
+            margin: 0 0 14px;
+            font-size: 22px;
+            line-height: 1.35;
+            color: #fff;
+        }
+
+        .content-section .pub-card p {
+            max-width: none;
+            margin: 0 0 14px;
+            text-align: left;
+        }
+
+        .content-section .pub-card .pub-note {
+            margin: 0;
+            font-size: 14px;
+            color: #888;
+        }
+
         @keyframes fadeIn { to { opacity: 1; } }
         @keyframes fadeInUp {
             to {
@@ -300,7 +338,7 @@
 
     <div class="page-wrapper">
         <header class="page-header">
-            <a href="index.html" class="back-link">
+            <a href="index.html#bair" class="back-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                 Back to Home
             </a>
@@ -325,24 +363,38 @@
         <main class="main-content">
             <section class="content-section" style="--delay: 0.8s;">
                 <h2>Overview</h2>
-                <p>Research project with a team of UC Berkeley AI Research Lab (BAIR) Researchers Under Professor Keutzer Using Machine Learning to Translate Underserved Asian Languages to English Text. Currently working on a project building a dataset of paired Sanskrit OCR text and scanned images. </p>
+                <p>Research with a team at UC Berkeley AI Research (BAIR) under Prof. Kurt Keutzer, using machine learning to translate underserved Asian languages into English. I developed MITRA-Swarm, an agent-swarm machine translation framework: a multi-agent architecture that injects explicit morphophonemic and discourse structure into foundation models for classical Sanskrit translation. The paper was accepted at the NeurIPS 2026 LP4FM workshop, and we are continuing the work toward a follow-up paper.</p>
                 <div class="tags-container">
+                    <span class="tag-item">Multi-Agent Systems</span>
+                    <span class="tag-item">Machine Translation</span>
+                    <span class="tag-item">Sanskrit</span>
+                    <span class="tag-item">Foundation Models</span>
                     <span class="tag-item">Research</span>
-                    <span class="tag-item">Artificial Intelligence</span>
-                    <span class="tag-item">Machine Learning</span>
-                    <span class="tag-item">Academic Research</span>
                 </div>
             </section>
 
             <hr class="divider" />
             
+            <section class="content-section" style="--delay: 0.9s;">
+                <h2>Publication</h2>
+                <div class="pub-card">
+                    <p class="pub-venue">NeurIPS 2026 Workshop on Linguistic Principles for Foundation Models (LP4FM)</p>
+                    <p class="pub-title">MITRA-Swarm</p>
+                    <p>Lead author. We present a multi-agent architecture injecting explicit morphophonemic and discourse structure into foundation models for classical Sanskrit translation, evaluated through an independent two-judge protocol.</p>
+                    <p class="pub-note">Paper link will be available soon, once OpenReview makes it public.</p>
+                </div>
+            </section>
+
+            <hr class="divider" />
+
             <section class="content-section" style="--delay: 1s;">
                 <h2>Key Achievements</h2>
                 <ul class="achievements-list">
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Contributed to ongoing research projects in AI/ML</span></li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Collaborated with BAIR researchers and faculty members</span></li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Gained experience in state-of-the-art research</span></li>
-                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Developed expertise in the academic research process</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Lead-author paper accepted at the NeurIPS 2026 LP4FM workshop.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Developed MITRA-Swarm, an agent-swarm translation framework that significantly outperforms standard foundation model baselines in translation quality.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Showed the agent-swarm architecture outperforms compute-matched self-refinement baselines.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Engineered a dual-judge evaluation framework and ran a 12-condition ablation across 1,000 text samples.</span></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Continuing the research with the team toward a follow-up paper.</span></li>
                 </ul>
             </section>
 
@@ -352,8 +404,9 @@
                 <h2>Technologies & Tools</h2>
                 <div class="tags-container">
                     <span class="tag-item">Python</span>
-                    <span class="tag-item">Jupyter Notebooks</span>
-                    <span class="tag-item">Pandas</span>
+                    <span class="tag-item">Foundation Models</span>
+                    <span class="tag-item">Multi-Agent Systems</span>
+                    <span class="tag-item">LLM-as-a-Judge Evaluation</span>
                     <span class="tag-item">Git</span>
                 </div>
             </section>

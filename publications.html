@@ -101,6 +101,13 @@
             line-height: 1.5;
         }
 
+        .pub-tldr {
+            margin-top: 14px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         .pub-link {
             margin-top: 16px;
             display: inline-block;
@@ -195,9 +202,23 @@
     </div>
 
     <div class="publications-list">
-        <a href="https://arxiv.org/abs/2603.27528" target="_blank" class="publication-item">
+        <div class="publication-item" style="cursor: default;">
+            <div class="pub-title">LLMs Leak Secrets Through Unrelated Outputs</div>
+            <div class="pub-conference">NeurIPS 2026 Workshop: Beyond Private Training, The New Landscape of AI Privacy (InfPriv)</div>
+            <div class="pub-authors">Kayshav Bhardwaj (first author). ACTION NSF AI Institute, UC Santa Barbara</div>
+            <div class="pub-tldr">LLMs can statistically leak secrets through unrelated outputs without reproducing them: a white-box likelihood attack identifies a hidden PIN from one strictly filtered number list and recovers 48% of held-out PINs from repeated outputs.</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Paper link will be available soon, once OpenReview makes it public</span>
+        </div>
+        <div class="publication-item" style="cursor: default;">
+            <div class="pub-title">MITRA-Swarm</div>
+            <div class="pub-conference">NeurIPS 2026 Workshop on Linguistic Principles for Foundation Models (LP4FM)</div>
+            <div class="pub-authors">Kayshav Bhardwaj (lead author). Berkeley AI Research (BAIR)</div>
+            <div class="pub-tldr">We present a multi-agent architecture injecting explicit morphophonemic and discourse structure into foundation models for classical Sanskrit translation, evaluated through an independent two-judge protocol.</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Paper link will be available soon, once OpenReview makes it public</span>
+        </div>
+        <a href="https://arxiv.org/abs/2603.27528" target="_blank" rel="noopener noreferrer" class="publication-item">
             <div class="pub-title">Advancing Multi-Instrument Music Transcription: Results from the 2025 AMT Challenge</div>
-            <div class="pub-conference">NeurIPS 2025 AI For Music Workship</div>
+            <div class="pub-conference">NeurIPS 2025 AI for Music Workshop, arXiv:2603.27528</div>
             <div class="pub-authors">Ojas Chaturvedi, Kayshav Bhardwaj, Tanay Gondil, Benjamin Shiue-Hal Chou, Kristen Yeon-Ji Yun, Yung-Hsiang Lu, Yujia Yan, Sungkyun Chang</div>
             <span class="pub-link">Read Paper &rarr;</span>
         </a>
@@ -207,21 +228,21 @@
 
     <div class="publications-list">
         <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Follow-up Research on Secret Leakage and Subliminal Learning in LLMs</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">ACTION NSF AI Institute, UC Santa Barbara</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
+            <div class="pub-title">Follow-up Research on Agent Swarms for Sanskrit Translation</div>
+            <div class="pub-conference">In Preparation</div>
+            <div class="pub-authors">Berkeley AI Research (BAIR)</div>
+            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
+        </div>
+        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
             <div class="pub-title">Research on Automatic Music Transcription</div>
             <div class="pub-conference">In Preparation</div>
             <div class="pub-authors">AI4Musicians Lab</div>
-            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
-        </div>
-        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
-            <div class="pub-title">Sanskrit Optical Character Recognition Using AI</div>
-            <div class="pub-conference">In Preparation</div>
-            <div class="pub-authors">Berkeley AI Research Lab (BAIR)</div>
-            <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
-        </div>
-        <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
-            <div class="pub-title">Machine Learning for Satellite GNSS Signal Anomaly Detection</div>
-            <div class="pub-conference">In Preparation</div>
-            <div class="pub-authors">Data Mine of the Rockies, National Space Intelligence Center (NSIC), KBR</div>
             <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
         </div>
         <div class="publication-item" style="cursor: default; border-color: rgba(255, 255, 255, 0.05);">
@@ -230,9 +251,8 @@
             <div class="pub-authors">GRAIL Lab</div>
             <span class="pub-link" style="text-decoration: none; opacity: 0.5;">Coming Soon</span>
         </div>
-
     </div>
 
-    <a href="index.html" class="back-button">Back to Home</a>
+    <a href="index.html#publications" class="back-button">Back to Home</a>
 </body>
 </html>
